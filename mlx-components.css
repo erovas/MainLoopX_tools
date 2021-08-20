@@ -1,0 +1,601 @@
+/*#region RANGE*/
+
+.mlx-range {
+    /* ESTRUCTURA */
+    display: block;
+    box-sizing: border-box;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    /* APARIENCIA */
+    background: transparent;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.mlx-range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+}
+
+.mlx-range:focus {
+    outline: none;
+}
+
+.mlx-range::-ms-track {
+    width: 100%;
+    cursor: pointer;
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+}
+
+/* 
+    Estilizado del thumb (bolita que se desliza) 
+    - Se tiene que repetir codigo, de lo contrario, no funciona
+*/
+
+/* CHROMIUM */
+.mlx-range::-webkit-slider-thumb {
+    box-sizing: border-box;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+
+    border: 1px solid #b6b4b4;
+    background: #676774;
+    cursor: pointer;
+    margin-top: -4px; /*NECESARIO para centrarlo verticalmente*/
+}
+
+.mlx-range::-webkit-slider-thumb:active {
+    background-color: #378dc7;
+}
+
+/* FIREFOX */
+.mlx-range::-moz-range-thumb {
+    box-sizing: border-box;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+
+    border: 1px solid #b6b4b4;
+    background: #676774;
+    cursor: pointer;
+    margin-top: 0;
+}
+
+.mlx-range::-moz-range-thumb:active {
+    background-color: #378dc7;
+}
+
+/* INTERNET EXPLORER */
+.mlx-range::-ms-thumb {
+    box-sizing: border-box;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+
+    border: 1px solid #b6b4b4;
+    background: #676774;
+    cursor: pointer;
+    margin-top: 0;
+}
+
+.mlx-range::-ms-thumb:active {
+    background-color: #378dc7;
+}
+
+/*
+    Estilizado del track (por donde se desliza el thumb)
+    - Se tiene que repetir codigo, de lo contrario, no funciona
+*/
+
+/* CHROMIUM */
+.mlx-range::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 8px;
+    box-sizing: border-box;
+    border-radius: 8px;
+
+    cursor: pointer;
+    background: #414142;
+}
+  
+.mlx-range:focus::-webkit-slider-runnable-track {
+    background: #6b6b6d;
+}
+
+/* FIREFOX */
+.mlx-range::-moz-range-track {
+    width: 100%;
+    height: 8px;
+    box-sizing: border-box;
+    border-radius: 8px;
+
+    cursor: pointer;
+    background: #414142;
+}
+
+.mlx-range:focus::-moz-range-track {
+    background: #6b6b6d;
+}
+
+/* INTERNET EXPLORER */
+.mlx-range::-ms-track {
+    width: 100%;
+    height: 8px;
+    cursor: pointer;
+    background: transparent;
+    border-color: transparent;
+    border-width: 4px 0;
+    color: transparent;
+}
+.mlx-range::-ms-fill-lower {
+    background: #0E639C;
+    border-radius: 8px;
+}
+.mlx-range:focus::-ms-fill-lower {
+    background: #378dc7;
+}
+.mlx-range::-ms-fill-upper {
+    background: #414142;
+    border-radius: 8px;
+}
+.mlx-range:focus::-ms-fill-upper {
+    background: #6b6b6d;
+}
+
+/*#endregion*/
+
+/*#region NUMBER*/
+
+.mlx-number {
+    /* ESTRUCTURA */
+    display: inline-block;
+    box-sizing: border-box;
+    /*width: 30px;*/
+    padding: 0; 
+    border: 0; 
+    /* APARIENCIA */
+    text-align: center; 
+    background-color: transparent; 
+    color: inherit;
+    outline: none;
+    -moz-appearance: textfield;
+}
+
+.mlx-number::-webkit-outer-spin-button,
+.mlx-number::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/*#endregion*/
+
+/*#region MLX-WINDOW*/
+
+.mlx-window {
+    /* ESTRUCTURA */
+    box-sizing: border-box;
+    display: block; 
+    position: fixed;
+    left: 0;
+    top: 0;
+    margin: 0;
+    padding: 0;
+    z-index: 100;
+    /* APARIENCIA */
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    background-color: #252526;
+    border: 1px solid #313132;
+    color: #d1d3d4;
+}
+
+.mlx-window * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.mlx-window:focus {
+    border-color: #6B6866;
+}
+
+.mlx-window fieldset {
+    border-radius: 3px;
+    padding: 0.2em; 
+    padding-top: 0;
+
+    color: inherit;
+    border: 1px solid #d1d3d4;
+}
+
+.mlx-window legend {
+    font-size: 12px;
+    color: inherit;
+}
+
+/* cabecera */
+
+.mlx-window__head {
+    display: flex;
+    height: 25px;
+    margin-bottom: 5px;
+
+    font-family: inherit;
+    color: #8E8E8E;
+    background-color: #323233;
+}
+
+.mlx-window__grab {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-grow: 1;
+    padding-left: 5px;
+    
+    cursor: grab;
+}
+
+.mlx-window__grab:active {
+    cursor: grabbing;
+}
+
+.mlx-window__head > button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 35px;
+
+    background-color: transparent;
+    border: 0;
+    color: inherit;
+    font-size: 16px;
+    font-weight: 900;
+    cursor: pointer;
+}
+
+.mlx-window__head > button:hover {
+    background-color: #505050;
+}
+
+.mlx-window__head > button:active {
+    background-color: #5c5c5c;
+}
+
+.mlx-window__head > button:last-child:hover {
+    background-color: #D71526;
+}
+
+.mlx-window__head > button:last-child:active {
+    background-color: #d83a47;
+}
+
+/* cuerpo */
+
+.mlx-window__body {
+    margin-bottom: 7px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.mlx-window__row {
+    display: block;
+    margin: 0;
+    margin-bottom: 5px;
+}
+
+.mlx-window__row:last-child {
+    margin: 0;
+}
+
+/* pie */
+
+.mlx-window__foot {
+    display: flex;
+    height: 25px;
+
+    font-family: inherit;
+    color: #8E8E8E;
+    background-color: #323233;
+}
+
+/*#endregion*/
+
+/*#region BUTTON*/
+
+.mlx-btn {
+    /* ESTRUCTURA */
+    display: inline-block;
+    box-sizing: border-box;
+    border: 0;
+    padding: 5px 10px;
+    border-radius: 1px;
+    margin: 0;
+    /* APARIENCIA */
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    background-color: #0E639C;
+    color: #c9d1d9;
+    cursor: pointer;
+}
+
+.mlx-btn:hover {
+    background-color: #1177BB;
+}
+
+.mlx-btn:active {
+    background-color: #378dc7;
+}
+
+.mlx-btn.ele-round {
+    height: 24px;
+    width: 24px;
+    padding: 0;
+    font-size: 14px;
+}
+
+/*#endregion*/
+
+/*#region MLX-DEV*/
+
+.mlx-dev {}
+
+.mlx-dev__fps {
+    display: flex;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.mlx-dev__fps fieldset {
+    width: 55px;
+}
+
+.mlx-dev__fps fieldset > div {
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+}
+
+.mlx-dev__fps fieldset > div span {
+    display: block; 
+    flex-grow: 1; 
+    text-align: center;
+}
+
+.mlx-dev__fps fieldset > div div {
+    height: 15px; 
+    width: 15px;
+    border-radius: 50%;
+    background-color: grey; 
+}
+
+.mlx-dev__fps > div button {
+    margin: auto;
+    margin-top: 10px;
+    display: block;
+}
+
+.mlx-dev__fps > div {
+    flex-grow: 1; 
+}
+
+.mlx-dev__ctrl { }
+
+.mlx-dev__ctrl > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mlx-dev__ctrl > div .mlx-number {
+    width: 30px;
+}
+
+.mlx-dev__ctrl > div .mlx-number:-webkit-autofill
+{
+ -webkit-text-fill-color: #d1d3d4 !important;
+ -webkit-box-shadow: 0 0 0 30px #252526 inset !important;
+}
+
+.mlx-dev__ctrl > div:first-child {
+    justify-content: space-around;
+    height: 30px;
+}
+
+.mlx-dev__ctrl > div:first-child span {
+    text-align: start;
+    width: 47px;
+}
+
+.mlx-dev__ctrl > div span {
+    display: inline-block;
+    min-width: 35px;
+    text-align: center;
+}
+
+.mlx-dev__btns {
+    margin: auto;
+}
+
+.mlx-dev__btns button {
+    max-width: 25px;
+    width: 25px;
+    height: 25px;
+    max-height: 25px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0 3px;
+    border: 0;
+    appearance: none;
+    -webkit-appearance: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.mlx-dev__btns svg {
+    width: 80%;
+    height: 80%;
+    fill: #818183;
+}
+
+.mlx-dev__btns button:hover:first-child svg {
+    fill: #D71526;
+}
+
+.mlx-dev__btns button:hover svg {
+    fill: #01AD23;
+}
+
+.mlx-dev__btns button:hover:last-child svg {
+    fill: #ecc535;
+}
+
+
+/*#endregion*/
+
+/*#region MLX-ADV*/
+
+.mlx-adv__fps {
+    display: flex;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.mlx-adv__fps fieldset {
+    width: 140px;
+    overflow: hidden;
+}
+
+.mlx-adv__fps fieldset > div {
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    overflow: hidden;
+    height: 18px;
+}
+
+.mlx-adv__fps fieldset > div span {
+    display: block; 
+    flex-grow: 1; 
+    text-align: center;
+}
+
+.mlx-adv__fps fieldset > div div {
+    height: 15px; 
+    width: 15px;
+    border-radius: 50%;
+    background-color: grey; 
+}
+
+.mlx-adv__fps > div button {
+    margin: auto;
+    margin-top: 10px;
+    display: block;
+}
+
+.mlx-adv__fps > div {
+    flex-grow: 1; 
+}
+
+.mlx-adv__fps {
+
+}
+
+.mlx-adv__ctrl > div:first-child {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 30px;
+}
+
+.mlx-adv__ctrl > div:first-child span {
+    display: block;
+    width: 135px;
+}
+
+.mlx-adv__ctrl > div:last-child input {
+    background-color: transparent;
+    text-align: center;
+    border: 0;
+    color: #d1d3d4;
+}
+
+.mlx-adv__ctrl > div:last-child input:-webkit-autofill
+{
+ -webkit-text-fill-color: #d1d3d4 !important;
+ -webkit-box-shadow: 0 0 0 30px #252526 inset !important;
+}
+
+/*#endregion*/
+
+/*#region MLX-INFO*/
+
+.mlx-info__fps {
+    display: flex;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.mlx-info__fps fieldset {
+    flex-grow: 1;
+    width: 210px;
+}
+
+.mlx-info__fps fieldset > div {
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+}
+
+.mlx-info__ctrl > div:first-child {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 30px;
+}
+
+.mlx-info__ctrl > div:first-child span {
+    display: block;
+    /*width: 135px;*/
+}
+
+.mlx-info__ctrl > div:last-child {
+    display: flex;
+    justify-content: center;
+}
+
+.mlx-info__ctrl > div:last-child input {
+    background-color: transparent;
+    text-align: center;
+    border: 0;
+    color: #d1d3d4;
+}
+
+/*#endregion*/
+
+/*#region GENERAL*/
+
+.ele-round {
+    border-radius: 50%;
+}
+
+/* Don't highlight anything on click-and-drag except input and textareaa */
+:not(input):not(textarea) {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/*#endregion*/
+
+
