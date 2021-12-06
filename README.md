@@ -1,7 +1,11 @@
 # MainLoopX_tools
-Some tools to control MainLoopX.js
+Some tools to control MainLoopX.js.
 
-![alt text](https://github.com/erovas/MainLoopX_tools/blob/master/screen.png?raw=true)
+![screenshot](https://github.com/erovas/MainLoopX_tools/blob/main/screen.png?raw=true)
+
+Please go to index.html and see the structure.
+
+You can find MainLoopX in https://github.com/erovas/MainLoopX.js
 
 ## Demo
 
