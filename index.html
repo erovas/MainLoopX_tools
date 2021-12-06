@@ -7,28 +7,31 @@
     <title>MainLoopX - Tools</title>
     
     <!-- you can find it in https://github.com/erovas/Import.js -->
-    <script src="Scripts/Import.js"></script>
+    <script src="https://erovas.github.io/Import.js/Import.js"></script>
 
     <script>
 
         if(!!document.documentMode){ //IE
             //Polyfill for <template>, you can find it in https://github.com/erovas/template-tag-polyfill.js
-            Import.JS('Polyfills/template-tag-polyfill');
-            //Polyfill for Element.closest(), you can find it in https://developer.mozilla.org/en-US/docs/Web/API/Element/closest
-            Import.JS('Polyfills/closest-polyfill');
+            Import.JS('https://erovas.github.io/template-tag-polyfill.js/template-tag-polyfill');
+            //Polyfill for Element.closest(), you can find it in https://developer.mozilla.org/es/docs/Web/API/Element/closest
+            Import.JS('https://erovas.github.io/useful-JavaScript-functions-/closest-Polyfill');
         }
 
-        if(!!window.StyleMedia) //IE and EDGE LEgacy
+        if(!!window.StyleMedia) //IE and EDGE Legacy
             //Polyfill for customElements, you can find it in https://github.com/webcomponents/polyfills/tree/master/packages/webcomponentsjs
-            Import.JS('https://unpkg.com/@webcomponents/custom-elements@1.5.0/custom-elements.min');
+            Import.JS('https://erovas.github.io/useful-JavaScript-functions-/customElements-Polyfill');
 
+        //Dependency, you can find it in https://github.com/erovas/ES5customElements.js
+        Import.JS('https://erovas.github.io/ES5customElements.js/ES5customElements');
+
+        //Dependency, you can find it in https://github.com/erovas/ES5customElements.js
+        Import.JS('https://erovas.github.io/MainLoopX.js/MainLoopX');
+
+        //Dependency, you can find it in https://github.com/erovas/Drog.js
+        Import.JS('https://erovas.github.io/Drog.js/Drog')
 
         let Libraries = [
-            //Dependencies
-            'ES5customElements',  // you can find it in https://github.com/erovas/ES5customElements.js
-            'MainLoopX',          // you can find it in https://github.com/erovas/ES5customElements.js
-            'Drog.min',           // you can find it in https://github.com/erovas/Drog.js
-
             //Tools
             'mlx-base',     //tool base
             'mlx-dev',      //Developer Tool
